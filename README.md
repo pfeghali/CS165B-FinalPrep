@@ -38,7 +38,7 @@ Models are the tools that we use to conduct machine learning. Choosing the right
 There are two overarching types of learning, online and offline learning. Offline learning is significantly more common, which is utilizing a set of predetermined data points to train a model, then verifying performance, and applying it to a real problem. This model is then fixed with defined weights, and is usually never retrained. Online learning is the process of taking a ML model and putting it into the world, then having it make decesions while evaulating performance live. This allows for the continous learning of a problem with an increasing array of data, but may not be easy to work with.
 
 # Types of ML
-There are 4 overarching types of ML. These categories define the type of models and algorithims used to trian.
+There are 4 main types of ML. These categories define the type of models and algorithims used to trian.
 
 ## Supervised
 Supervised Learning is when the input data is well deined and lebelled. The input is mapped to a correct corresponding output, and there are no unknnown variables in the data. This is usually the most easy to work with, with high levels of complexity when dealing with hard problems. Particularly, you may not have enough data, which is where semi-supervised learning comes in.
