@@ -11,166 +11,165 @@ Please email me if you'd like something updated or changed.
 ##### *All code blocks are mine unless otherwise noted, and might have errors/be suboptimal. I will be using pseudocode. Other documents and references will be linked to. Sorry about the typos.*
 ---
 
-#What is ML
+# What is ML
 Ml is
 
-##Tasks
+## Tasks
 
-##Experience
+## Experience
 
-##Performance
+## Performance
 
-##Features
+## Features
 
-###Feature Engineering
+### Feature Engineering
 
-##Models
+## Models
 
-#Types of ML
+# Types of ML
 
-##Supervised
+## Supervised
 
-##Semi-Supervised
+## Semi-Supervised
 
-##Unsupervised
+## Unsupervised
 
-##Reinforcement learning
+## Reinforcement learning
 
-#Key ML Tasks
+# Key ML Tasks
 
-##Predective vs Descriptive
+## Predective vs Descriptive
 
-##Tasks:
+## Tasks:
 
-###Classification
+### Classification
 
-###Clustering
+### Clustering
 
-###Regression
+### Regression
 
-###Dimensionality Reduction
+### Dimensionality Reduction
 
-###Anolmaly Detection
+### Anolmaly Detection
 
-#Types of ML models
+# Types of ML models
 
-##Geometric Models
+## Geometric Models
 
-##Probablistic Models
+## Probablistic Models
 
-##Logical Models
+## Logical Models
 
-#Generalization vs Overfitting
+# Generalization vs Overfitting
 
-#Intrinsic Dimensions
+# Intrinsic Dimensions
 
-#Inductive Bias
+# Inductive Bias
 
-#The Curse of Dimensionality
+# The Curse of Dimensionality
 
-#Norms (Distance Measures)
+# Norms (Distance Measures)
 
-#Contingency Plots
+# Contingency Plots
 
-###True Positive
+### True Positive
 
-###False Positives
+### False Positives
 
-###False Negatives
+### False Negatives
 
-###False Positives
+### False Positives
 
-###Accuracy
+### Accuracy
 
-###Precision
+### Precision
 
-###Error Rate
+### Error Rate
 
-###Recall
+### Recall
 
-###Sensitivity
+### Sensitivity
 
-###F1 Score
+### F1 Score
 
-#Accuracy vs Precision vs Recall
+# Accuracy vs Precision vs Recall
 
-##Deciding what you want and why
+## Deciding what you want and why
 
-##Deciding on how to optimize for that objective
+## Deciding on how to optimize for that objective
 
-#Coverage plots / ROC Plot
+# Coverage plots / ROC Plot
 
-#Scoring Classifiers
+# Scoring Classifiers
 
-##Margin
+## Margin
 
-##Loss Functions
+## Loss Functions
 
-###Minimizing Overfitting with intelligent loss function choices
+### Minimizing Overfitting with intelligent loss function choices
 
-#Ranking Classifiers
+# Ranking Classifiers
 
-##Error Assesment
+## Error Assesment
 
-##Coverage Curves
+## Coverage Curves
 
-#LaPlace correction
+# LaPlace correction
 
-#Empirical probability
+# Empirical probability
 
-#M-Estimate
+# M-Estimate
 
-#MAP Decision rule
+# MAP Decision rule
 
-#Least Squares Model
+# Least Squares Model
 
-#Regression Models
+# Regression Models
 
-##Residual Error Optimization
+## Residual Error Optimization
 
-##Multivariate Linear Regression
+## Multivariate Linear Regression
 
-##Linear Least Squares Regression
+## Linear Least Squares Regression
 
-###Univariate
+### Univariate
 
-###Multivariate
+### Multivariate
 
+### Least Squares Classifier
 
-###Least Squares Classifier
+# Trees
 
-#Trees
+## Decision Trees vs Feature Trees
 
-##Decision Trees vs Feature Trees
+## Decision Trees
 
-##Decision Trees
+## Feature Trees
 
-##Feature Trees
+## Ranking Trees
 
-##Ranking Trees
+## Probability Estimation Trees
 
-##Probability Estimation Trees
+# Stats
 
-#Stats
+### Mean
 
-###Mean
+### Variance
 
-###Variance
+### Covariance
 
-###Covariance
+### Covariance Matrix
 
-###Covariance Matrix
+### Uncorrelated Variables
 
-###Uncorrelated Variables
+## Bayes Rule
 
-##Bayes Rule
+# Math + More
 
-#Math + More
+## Homogenous vs Non-Homogenous Coordinate Representations
 
-##Homogenous vs Non-Homogenous Coordinate Representations
+## Outliers
 
-##Outliers
+## Regularization
 
-##Regularization
-
-#The Perceptron Model
+# The Perceptron Model
