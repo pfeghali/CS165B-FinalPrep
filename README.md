@@ -87,7 +87,11 @@ Please email me if you'd like something updated or changed.
 ###Uncorrelated Variables
 ##Bayes Rule
 #Math + More
+
 ##Homogenous vs Non-Homogenous Coordinate Representations
+
 ##Outliers
+
 ##Regularization
+
 #The Perceptron Model
