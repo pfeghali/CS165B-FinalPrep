@@ -149,7 +149,7 @@ The margin is usually also the score. The margin is defined as `z(x) = class(x)*
 ## Loss Functions
 A loss function is a functio which is used to tell some sort of a model how good of a decision it made. For example, one could penalize a model every time it gets an anwser wrong with a penalty of 1, and 0 if it is correct. While this would work, certain examples far from the decision boundary may not be taken enough into consideration. We cna use other loss functions that scale with distance to better optimize our optimization process such that the model converges.
 ### Minimizing Overfitting with intelligent loss function choices
-
+By choosing your loss function intelligently, you can minimize overfitting and get a more stable model. Certain loss functions are designed to penalize correct solutions as well, if they are too close (or far) from the boundary. It is easy to imagine extranneous behavior for loss function design that may fit better for some problems than others. 
 # Ranking Classifiers
 
 ## Error Assesment
