@@ -104,30 +104,35 @@ The curse of dimensionality is fundementally a sparsity problem, where an input 
 
 # Norms (Distance Measures)
 We utilize norms to measure the distance between data points in space. Common norms are the L2 norm, which is commonly seen in the form A^2 + B^2 = C^2. As well, the L1 norm, also known as the manhattan distance, is simply the summation of the difference between coordinate axes.  
-For a norm *N* with *D* dimensions, we can define the Norm between two points *A* and *B* as: ![equation](https://latex.codecogs.com/gif.latex?L_N%3D%5Csqrt%5BN%5D%7B%5Csum_%7Bi%20%5Cin%20D%7D%28A_i-B_i%29%5EN%7D)
+For a norm *N* with *D* dimensions, we can define the Norm between two points *A* and *B* as:  
+![equation](https://latex.codecogs.com/gif.latex?L_N%3D%5Csqrt%5BN%5D%7B%5Csum_%7Bi%20%5Cin%20D%7D%28A_i-B_i%29%5EN%7D)
 
 # Contingency Plots
+A contingency plot is a table which represents the distribution of a classified otuputs into some sort of a plot given the input classes and the predicted outputs. In this case, we will focus on the plots as defined in the Professor's presentations, rather than in the book.
+![Image of Binary Contigency Table](./binary_contingency_table.PNG)
 
 ### True Positive
-
-### False Positives
-
-### False Negatives
-
-### False Positives
-
+The true positives are the examples that have been classified correctly, in the positive class (or more generally, in the class we are considering positive. Note that this may seem redundant, but this distinction is important when determnining contingency tables for multi-class problems).
+### False Positives (Type I Error)
+False positives are examples that have been misclassifed as positive, but actually should be false.
+### True Negatives
+True negatives are the set of input examples that map to a negative input classification accurately.
+### False Negatives (Type II Error)
+False negatives are the set of true examples that have been mapped incorrectly as false.
 ### Accuracy
-
+Accuracy is defined as defined as the number of true positives and true negatives over the true number of positive and negative examples. In other words, this is the number of correctly classified examples over the total.
 ### Precision
-
+Precision is defined as the number of True Positives over the count of True Positives and False Positives.
 ### Error Rate
-
-### Recall
-
-### Sensitivity
-
+Error Rate is the number of False Positives and False Negatives over the total number of examples.
+### Recall / Sensitivity
+Recall is synonymous with the True Positive Rate and Sensitivity, True Positives over the number of true positives.
+### Specificity
+Specificity is synonymous with the True Negative Rate, True Negatives over the the number of true negatives
 ### F1 Score
-
+![F1 Score](https://latex.codecogs.com/gif.latex?%5Cfrac%7B2*precision*recall%7D%7Bprecision&plus;recall%7D%20%3D%20%5Cfrac%7B2*TP%7D%7BP&plus;%5Chat%7BP%7D%7D)
+### TP/TN/FP/FN Rate
+For all the rates, just take the value you want to find the rate off, then divide it by the actual number of positive or negative examples.
 # Accuracy vs Precision vs Recall
 
 ## Deciding what you want and why
