@@ -53,12 +53,17 @@ Unsupervised learning is when a user has a set of data points with correlation, 
 Reinforcement learning is the utilization of experience to learn. An engineer allows a model to reck havoc in some sort of enviornment, just knowing its output space and a set of inputs. It then has to get a reward for completing a task. The agent has no knowledge of what the task is beforehand, and must learn it from scratch by improving its reward. This method of learning is solely through exploration, and has achieved superhuman performance at a variety of problems. It is computationally expensive, but unbelievably effective.
 
 # Key ML Tasks
+Machine Learning tasks can be put into a few categories.
 
 ## Predective vs Descriptive
+Models can generally be split into two categories, predictive or descruptive models. Predective models are characterized by whether or not they have an output variable which contains the target variable. If the model output contains the target variable in some sense, then it is considered a predictive model, and otherwise it is considered a descriptive model.
 
 ## Tasks:
+Tasks are the sort of things we can make ML models do. What is the difference between a model that classifies fruits and vegetables, and a model that classifies rocks and potatos? Other than the weights and paramaters and such, they are both fundementally a binary classification task.
+Due to inherent forms of problems, we can disseminate the main type of tasks that ML models will need to accomplish.
 
 ### Classification
+Classification tasks are when a model is asked to classify an input as some pre-defined output class. [If there are two potential outputs, then the problem can be considered binary classification.](https://www.youtube.com/watch?v=ACmydtFDTGs) This can be generalized to K-Class Classification, where an input can be mapped to K classes.
 
 ### Clustering
 
@@ -115,6 +120,8 @@ Reinforcement learning is the utilization of experience to learn. An engineer al
 ## Deciding on how to optimize for that objective
 
 # Coverage plots / ROC Plot
+
+# Basic Linear Classifer
 
 # Scoring Classifiers
 
