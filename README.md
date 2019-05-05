@@ -75,17 +75,23 @@ Regression is the mapping of a n-d feature space to a real valued output or set 
 Dimensionality Reduction is the process of taking a set on inputs in a n-d feature space, and reducing that space to a corresponding output, while retaining relvatnt information. Examples of this can be seen with simple redction of redundant features, and more usefully, with encoder models to simplify some sort of an input to an output which can be eaily used an dcontains desirable features.
 
 ### Anomaly Detection
-Anomaly Detection is the utilization of some sort of model t recognize when an inconsistency occurs.
+Anomaly Detection is the utilization of some sort of model to recognize when an inconsistency occurs. I am not very familiar with this.
 
 # Types of ML models
+ML model types can be put into one of three regimes, which define how the model determines its output. It is important to recognize that models may fall into multiple categories, depending on ones interpretation of them.  
+I quite like this image:
+![Image of Model Tree](./grading_tree.PNG)
+### Geometric Models
+Geometric models are constructed in the instance space, using hyperplanes or other geometric methods. Common geometric models are linear classifiers and SMVs.
 
-## Geometric Models
+### Probablistic Models
+A probabilistic model is one which outputs a targer variable representing the likeihood that an input x maps to class y. More generally, it is any model which utilizes the input feature space to find probabilities, rather than a specific decision. These can easily be mapped to classification problems, for example, as one can simply max(:) the outputs of a k-class-probability model.
 
-## Probablistic Models
-
-## Logical Models
+### Logical Models
+Logical models are models which used a rule based approach to decide their output. Commonly, decision trees learn a set of rules from the input data. These methods are advantageous due to excellent performance and easy comprehensibility. 
 
 # Generalization vs Overfitting
+
 
 # Intrinsic Dimensions
 
