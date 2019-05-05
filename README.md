@@ -85,7 +85,7 @@ I quite like this image:
 Geometric models are constructed in the instance space, using hyperplanes or other geometric methods. Common geometric models are linear classifiers and SMVs.
 
 ### Probablistic Models
-A probabilistic model is one which outputs a targer variable representing the likeihood that an input x maps to class y. More generally, it is any model which utilizes the input feature space to find probabilities, rather than a specific decision. These can easily be mapped to classification problems, for example, as one can simply max(:) the outputs of a k-class-probability model.
+A probabilistic model is one which outputs a targer variable representing the likeihood that an input x maps to class y. More generally, it is any model which utilizes the input feature space to find probabilities, rather than a specific decision. These can easily be mapped to classification problems, for example, as one can simply argmax(:) the outputs of a k-class-probability model.
 
 ### Logical Models
 Logical models are models which used a rule based approach to decide their output. Commonly, decision trees learn a set of rules from the input data. These methods are advantageous due to excellent performance and easy comprehensibility. 
@@ -143,11 +143,11 @@ Coverage plots are plots which measure the number of true positives and false po
 # Basic Linear Classifer
 A linear classifer is the process of finding a hyperplane to seperate data and be able to classify whether or not an input is part of category A or B. This can be thought of as solving the equation `a(x1-x1_0) + b(x2-x2_0) + c(x3-x30) + ... = 0` for all coeffecients. This can be solved by solving for the coeffecients `{a, b, ...}` and for the bias `{a*x1_0 + b*x2_0 + ...}`. The coeffecients and bias can be solved for by taking dot products. The bias is the dot product of the vector between two centers and the average vector of the two. The coeffecients are simply the vector between the two. Therefore solving the classifier requires taking the averages of the centroids, finding the vector between them, and taking dot products. This method is extensible to N dimensions.
 # Scoring Classifiers
-
+Scoring classifers produce some sort of score, which then is usually returned in combination with a prediction about waht the output is. Given an input, output a score for each of the K classes. Normally, the score is normalized to zero, with negatives indicating a negative class.
 ## Margin
-
+The margin is usually also the score. The margin is defined as `z(x) = class(x)*score(x)`. The corresponding score function is some function which maps the input to some output confidence level. A good function would be some function which retains sign, such as an L1 norm.
 ## Loss Functions
-
+A loss function is a functio which is used to tell some sort of a model how good of a decision it made. For example, one could penalize a model every time it gets an anwser wrong with a penalty of 1, and 0 if it is correct. While this would work, certain examples far from the decision boundary may not be taken enough into consideration. We cna use other loss functions that scale with distance to better optimize our optimization process such that the model converges.
 ### Minimizing Overfitting with intelligent loss function choices
 
 # Ranking Classifiers
