@@ -91,15 +91,20 @@ A probabilistic model is one which outputs a targer variable representing the li
 Logical models are models which used a rule based approach to decide their output. Commonly, decision trees learn a set of rules from the input data. These methods are advantageous due to excellent performance and easy comprehensibility. 
 
 # Generalization vs Overfitting
-
+Generalization is when one has a model which has well modelled the true underlying function you are trying to estimate. Overfitting is the inverse, which is when your model does too good of a job, and gets 100% on all of your training data, but fails on any real data. This is known as overfitting, as your model has optimized itself for the training data in too strong of a manner. Common signs of overfitting are when a) a model works on its first try or b) you see accuracy above 99% (except for MNIST).
 
 # Intrinsic Dimensions
+I quite like [Wikipedia's defintion](https://en.wikipedia.org/wiki/Intrinsic_dimension): "...How many variables are needed to represent the signal. For a signal of N variables, its intrinsic dimension M satisfies 0 ≤ M ≤ N." The intrinisc dimension of a set of features is the minimum number of dimensions needed to properly display a signal.
 
 # Inductive Bias
+Inductive bias is the inherit bias of your model. It is the set of assumptions that are made to solve the problem at hand, either assumed by the model designer, or the model during training. This bias is usually in a form which optimizes for minimal complexity. At a base level this can be thought of as a thought process to design methoda and models that reduce overfitting. Truly, the reaso this is such a valid method to model complex systems, in addition to the obvious, can be understood in more depth [here](https://arxiv.org/abs/1608.08225). Essentially, Nature is fundementally not *that* complex. Therefore NN and ML is actually a pretty darn good way to describe natural phenomena and other processes, and we really do not need super complex models to solve *most* tasks. So in other words, a simple model can properly learn complex behavior -> we can rely on a subset of all possible data to extrapolate to a true funtion -> inductive bias.
 
 # The Curse of Dimensionality
+The curse of dimensionality is fundementally a sparsity problem, where an input training space can be too large given a number of features, and therefore it can be easy to fail to have enough density in training data to train a model effectively. As the number of input features increases, the amount of training data needed increases exponentially. Using methods such as feature selection can help choose the optimal model input features. The book mentions using PCA to simplify the input space as well.
 
 # Norms (Distance Measures)
+We utilize norms to measure the distance between data points in space. Common norms are the L2 norm, which is commonly seen in the form A^2 + B^2 = C^2. As well, the L1 norm, also known as the manhattan distance, is simply the summation of the difference between coordinate axes.  
+For a norm *N* with *D* dimensions, we can define the Norm between two points *A* and *B* as: ![equation](https://latex.codecogs.com/gif.latex?L_N%3D%5Csqrt%5BN%5D%7B%5Csum_%7Bi%20%5Cin%20D%7D%28A_i-B_i%29%5EN%7D)
 
 # Contingency Plots
 
