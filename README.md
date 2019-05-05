@@ -126,23 +126,22 @@ Precision is defined as the number of True Positives over the count of True Posi
 ### Error Rate
 Error Rate is the number of False Positives and False Negatives over the total number of examples.
 ### Recall / Sensitivity
-Recall is synonymous with the True Positive Rate and Sensitivity, True Positives over the number of true positives.
+Recall is synonymous with the True Positive Rate and Sensitivity, True Positives over the number of actual positives.
 ### Specificity
-Specificity is synonymous with the True Negative Rate, True Negatives over the the number of true negatives
+Specificity is synonymous with the True Negative Rate, True Negatives over the the number of actual negatives
 ### F1 Score
 ![F1 Score](https://latex.codecogs.com/gif.latex?%5Cfrac%7B2*precision*recall%7D%7Bprecision&plus;recall%7D%20%3D%20%5Cfrac%7B2*TP%7D%7BP&plus;%5Chat%7BP%7D%7D)
 ### TP/TN/FP/FN Rate
 For all the rates, just take the value you want to find the rate off, then divide it by the actual number of positive or negative examples.
 # Accuracy vs Precision vs Recall
-
+All of the above are fundementally different objectives, and are well suited as performance metrics for a variety of tasks. While they can (and should!) be used as performance metrics by analyzing all three simultaneously, understanind what each represents is important to finding an optimal model.
 ## Deciding what you want and why
-
-## Deciding on how to optimize for that objective
-
+Accuracy is a good overall metric to measure performance. Accuracy gives a good view of the performance of a model, but fails to capture the details as to how the classifier leans. Precision measures how confident a user can be in a predicted positive output. This is important in situations where being right matters more than getting the right anwser every time. Recall represents how well the classifier gets positive anwsers correct. This ignores false positives, and gives the user the rate at which the classifier measured the positive examples correctly. This is representative of when a user wants to catch every possible case of an input, even if it might be wrong.
 # Coverage plots / ROC Plot
-
+![Image of a Coverage Plot](./coverage_plot.PNG)  
+Coverage plots are plots which measure the number of true positives and false positives in relation to the number of positive and negative examples. They allow simple comparison of classifiers in a visual way. The optimal modesl are on the top left, and the worst are on the top-right (or anywhere on the diagonal between the origin and top-right). ROC plots are the same thing, but they're square. The axes are 1x1, normalized by the number of samples such that any plotted points are representative of true positive rates and false positive rates.
 # Basic Linear Classifer
-
+A linear classifer is the process of finding a hyperplane to seperate data and be able to classify whether or not an input is part of category A or B. This can be thought of as solving the equation `a(x1-x1_0) + b(x2-x2_0) + c(x3-x30) + ... = 0` for all coeffecients. This can be solved by solving for the coeffecients `{a, b, ...}` and for the bias `{a*x1_0 + b*x2_0 + ...}`. The coeffecients and bias can be solved for by taking dot products. The bias is the dot product of the vector between two centers and the average vector of the two. The coeffecients are simply the vector between the two. Therefore solving the classifier requires taking the averages of the centroids, finding the vector between them, and taking dot products. This method is extensible to N dimensions.
 # Scoring Classifiers
 
 ## Margin
@@ -160,6 +159,8 @@ For all the rates, just take the value you want to find the rate off, then divid
 # LaPlace correction
 
 # Empirical probability
+
+# Class probability estimation
 
 # M-Estimate
 
