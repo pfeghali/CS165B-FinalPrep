@@ -66,12 +66,16 @@ Due to inherent forms of problems, we can disseminate the main type of tasks tha
 Classification tasks are when a model is asked to classify an input as some pre-defined output class. [If there are two potential outputs, then the problem can be considered binary classification.](https://www.youtube.com/watch?v=ACmydtFDTGs) This can be generalized to K-Class Classification, where an input can be mapped to K classes.
 
 ### Clustering
+Clustering is an unsupervised learning task where data points are mapped from a feature space into a secondary vecor space. In this vector space, points are clustered into a number of learned categories.
 
 ### Regression
+Regression is the mapping of a n-d feature space to a real valued output or set of outputs.
 
 ### Dimensionality Reduction
+Dimensionality Reduction is the process of taking a set on inputs in a n-d feature space, and reducing that space to a corresponding output, while retaining relvatnt information. Examples of this can be seen with simple redction of redundant features, and more usefully, with encoder models to simplify some sort of an input to an output which can be eaily used an dcontains desirable features.
 
-### Anolmaly Detection
+### Anomaly Detection
+Anomaly Detection is the utilization of some sort of model t recognize when an inconsistency occurs.
 
 # Types of ML models
 
