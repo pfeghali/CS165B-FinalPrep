@@ -163,7 +163,7 @@ The ranking accuracy is 1 - Ranking Error Rate
 If we imagine each line between data points to be a single decision rule, we can see that each decision rule has different performance. As we move the decision line from high to low, we can count the number of positive predictions and false positives.  
 By counting each, we can form a coverage curve, which represents how a moving decision boundary affects classification performance.  
 ![Image of Coverage Curve](./coverage_curve.PNG)  
-We can then count the area under the curve, and divide it by the total size, to give us the accuracy of the classifier.
+We can then count the area under the curve, and divide it by the total size, to give us the accuracy of the classifier. The plot above is known as a coverage curve, and if we normalize the graph to 1x1, then we get ROC curve. The area under the ROC curve is equivalent to the ranking accuracy. 
 
 # Class Probability Estimation
 A scoring classifier which outputs probabilities over K classes, where the probabilities must add to 1.
@@ -185,6 +185,7 @@ This can actually become a guaruntee, given a large enough training set m = |D|.
 The given equation was: `m>=(1/e)(ln(|H|) + ln(1/s))`
 
 # VC Dimension
+The VC dimension is an attempt at measuring the capacity of a space of functions that can be learned from statistical classification. This is defined as the largest set of points that an algorithm can shatter.
 
 # MAP Decision rule
 
