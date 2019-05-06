@@ -163,14 +163,28 @@ The ranking accuracy is 1 - Ranking Error Rate
 If we imagine each line between data points to be a single decision rule, we can see that each decision rule has different performance. As we move the decision line from high to low, we can count the number of positive predictions and false positives.  
 By counting each, we can form a coverage curve, which represents how a moving decision boundary affects classification performance.  
 ![Image of Coverage Curve](./coverage_curve.PNG)  
-We can then count the area under the curve,a nd divide it by the total size, to give us the accuracy of the classifier.
-# LaPlace correction
+We can then count the area under the curve, and divide it by the total size, to give us the accuracy of the classifier.
 
-# Empirical probability
+# Class Probability Estimation
+A scoring classifier which outputs probabilities over K classes, where the probabilities must add to 1.
 
-# Class probability estimation
+# Empirical Probabilities
+Empirical probabilities are essentially just the relative frequency of data.
+### Relative Frequency
+Given N instances of a class in a training set S, N/S = P  
+This method is obviously not perfect, as a training sample is not representative or the real world. Some examples may not be shown in the training samples that do exist, and others may be shown too much. There are certain methods to correct these potential pitfalls.
+## LaPlace Correction
+LaPlace Correction is done by adding a single example to each class, then dividing by the total number of samples and the number of classes: `(N_i + 1)/(|Training Set| + |Classes|)`
+## M-Estimate
+M-Estimate uses a set of priors to adjust the probabilites to a consistent state. Given that a set of data has a prior distribution p, and pseudo-counts m, for each example i we can apply the M-estimate function: `(N_i + m*pi_i)/(|S| + m)`
 
-# M-Estimate
+# PAC Learning
+PAC stands for Probably Approximately Correct. As taken from the slides, "If a concept is PAC-learnable, then there exists a learning algorithm that gets it mostly right, most of the time".  
+Define a hypothesis h in a space H, and a distribution of data D. Allow for an error rate of h for the distribution D: err_d. Allow some sort of error e, and allow a failure rate s. PAC learning outputs, with a probability at least 1-s, a hypothesis h such that err_d < e. These statements lead to the most of the time and mostly right statements.  
+This can actually become a guaruntee, given a large enough training set m = |D|.  
+The given equation was: `m>=(1/e)(ln(|H|) + ln(1/s))`
+
+# VC Dimension
 
 # MAP Decision rule
 
