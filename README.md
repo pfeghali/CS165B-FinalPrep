@@ -147,15 +147,23 @@ Scoring classifers produce some sort of score, which then is usually returned in
 ## Margin
 The margin is usually also the score. The margin is defined as `z(x) = class(x)*score(x)`. The corresponding score function is some function which maps the input to some output confidence level. A good function would be some function which retains sign, such as an L1 norm.
 ## Loss Functions
-A loss function is a functio which is used to tell some sort of a model how good of a decision it made. For example, one could penalize a model every time it gets an anwser wrong with a penalty of 1, and 0 if it is correct. While this would work, certain examples far from the decision boundary may not be taken enough into consideration. We cna use other loss functions that scale with distance to better optimize our optimization process such that the model converges.
+A loss function is a function which is used to tell some sort of a model how good of a decision it made. For example, one could penalize a model every time it gets an anwser wrong with a penalty of 1, and 0 if it is correct. While this would work, certain examples far from the decision boundary may not be taken enough into consideration. We cna use other loss functions that scale with distance to better optimize our optimization process such that the model converges.
 ### Minimizing Overfitting with intelligent loss function choices
 By choosing your loss function intelligently, you can minimize overfitting and get a more stable model. Certain loss functions are designed to penalize correct solutions as well, if they are too close (or far) from the boundary. It is easy to imagine extranneous behavior for loss function design that may fit better for some problems than others. 
 # Ranking Classifiers
-
+Ranking classifiers are useful for determing the ordering of some set of data points. This method is fairly robust to noise or other errors. The output of the classifier should have all of the positive examples ranked higher.
 ## Error Assesment
-
+We define a ranking error as a single pair in which a negative exampleis ranked higher than a positive example. In addition, if their a tie, we count such an error as .50.
+### Ranking Error Rate
+The ranking error rate is computed by dividing the number of errors by the number of positive data points * negatives.
+### Ranking Accuracy
+The ranking accuracy is 1 - Ranking Error Rate
 ## Coverage Curves
-
+![Image of Ranking Data](./ranking_curves.PNG)
+If we imagine each line between data points to be a single decision rule, we can see that each decision rule has different performance. As we move the decision line from high to low, we can count the number of positive predictions and false positives.  
+By counting each, we can form a coverage curve, which represents how a moving decision boundary affects classification performance.  
+![Image of Coverage Curve](./coverage_curve.PNG)  
+We can then count the area under the curve,a nd divide it by the total size, to give us the accuracy of the classifier.
 # LaPlace correction
 
 # Empirical probability
