@@ -244,3 +244,8 @@ The VC dimension is an attempt at measuring the capacity of a space of functions
 ## Regularization
 
 # The Perceptron Model
+
+# Other
+
+![Deep Learning](https://i.warosu.org/data/g/img/0589/10/1486941106427.png)  
+[Common ML optimization techniques are applied to other fields too!](http://cotty.16x16.com/compress/fractcpr.txt)
