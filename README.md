@@ -55,7 +55,7 @@ Reinforcement learning is the utilization of experience to learn. An engineer al
 # Key ML Tasks
 Machine Learning tasks can be put into a few categories.
 
-## Predective vs Descriptive
+## Predictive vs Descriptive
 Models can generally be split into two categories, predictive or descruptive models. Predective models are characterized by whether or not they have an output variable which contains the target variable. If the model output contains the target variable in some sense, then it is considered a predictive model, and otherwise it is considered a descriptive model.
 
 ## Tasks:
