@@ -72,7 +72,7 @@ Clustering is an unsupervised learning task where data points are mapped from a 
 Regression is the mapping of a n-d feature space to a real valued output or set of outputs.
 
 ### Dimensionality Reduction
-Dimensionality Reduction is the process of taking a set on inputs in a n-d feature space, and reducing that space to a corresponding output, while retaining relvatnt information. Examples of this can be seen with simple redction of redundant features, and more usefully, with encoder models to simplify some sort of an input to an output which can be eaily used an dcontains desirable features.
+Dimensionality Reduction is the process of taking a set on inputs in a n-d feature space, and reducing that space to a corresponding output, while retaining relvatnt information. Examples of this can be seen with simple redction of redundant features, and more usefully, with encoder models to simplify some sort of an input to an output which can be easily used and contains desirable features.
 
 ### Anomaly Detection
 Anomaly Detection is the utilization of some sort of model to recognize when an inconsistency occurs. I am not very familiar with this.
@@ -82,7 +82,7 @@ ML model types can be put into one of three regimes, which define how the model 
 I quite like this image:
 ![Image of Model Tree](./grading_tree.PNG)
 ### Geometric Models
-Geometric models are constructed in the instance space, using hyperplanes or other geometric methods. Common geometric models are linear classifiers and SMVs.
+Geometric models are constructed in the instance space, using hyperplanes or other geometric methods. Common geometric models are linear classifiers and SVMs.
 
 ### Probablistic Models
 A probabilistic model is one which outputs a targer variable representing the likeihood that an input x maps to class y. More generally, it is any model which utilizes the input feature space to find probabilities, rather than a specific decision. These can easily be mapped to classification problems, for example, as one can simply argmax(:) the outputs of a k-class-probability model.
