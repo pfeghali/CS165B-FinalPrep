@@ -8,7 +8,7 @@ There is probably material missing from here, albeit most information should be 
 Do not expect substantive proofs, that's not what this is for. This will be continously updated as the course progresses.
 Please email me if you'd like something updated or changed.
 ---
-##### *All code blocks are mine unless otherwise noted, and might have errors/be suboptimal. I will be using pseudocode. Other documents and references will be linked to. Sorry about the typos.*
+##### *All code blocks are mine unless otherwise noted, and might have errors/be suboptimal. I will be using pseudocode. Other documents and references will be linked to. Sorry about the typos, and excuse my math notation.*
 ---
 
 # What is ML
@@ -189,61 +189,135 @@ The VC dimension is an attempt at measuring the capacity of a space of functions
 
 # MAP Decision rule
 
-# Least Squares Model
-
 # Regression Models
+Regression is the process of taking some set of points and fitting some sort of a function to those data points.
 
 ## Residual Error Optimization
-
-## Multivariate Linear Regression
+Generally, regression focuses on the minimization of some sort of loss function.  
+The resdual is defined as the difference between the actual label of some data point and its predicted value. This value is then optimized on by different types of regression.
 
 ## Linear Least Squares Regression
+Linear least squares regression refers to the process of minimizing the sum of the squares of the residuals.
 
 ### Univariate
+So lets say we have a set of data points, with an input and an output. Since there is a single input variable, this is considered univariate. Lets consider these data points as (h, w). This can be parameterized as w = a+bh, with a being some sort of bias term, and b being the slope of the learned line.  
+Effectively, we then can expand this to a general form, where the output function to estimate w given some sort of h input would be `w=average(w)+(covariance(h,w)/variance(h)^2)(h-average(h))`. This function effectively begins by noralizing any sort of input variable, then estimating its output slope based on its covariace and variance, then adding the output bias.
 
 ### Multivariate
+Multivariate linear regresion is essentially the same idea, but now with a bunch more paramaters. With homogenous coordinates this is a fairly trivial solution.  
+Consider learning a weight vector defined by `w' = (X^T * X)^-1 * X^T * y`. This leads to the process of solving this problem with the form `y(X) = w'^T * X`. In this case, X has the inputs as row vectors.  
+If X is column vectors, then we redefine these equations such that `w' = (X * X^T)^-1 * X * y`
 
 ### Least Squares Classifier
+This can be done by encoding the classes as real numbers, then learning some sort of regression function, and thresholding the output. While this could work, generally, don't.
+
+## Regularization
+Regularization can be applied to regression problem to help minimize terms that explode. We minimize large coeffecients with regularization functions similair to `r(w)=||w||^2`. We minimize across the weights such that if any coeffecients are too large they are penalized.
+
+# The Perceptron Model
+The perceptron aims to solve the problem of finding the right solution to a given problem. Given some sort of data which is actually seperable, and a true solution exists, the peceptron model will find it. At a high level, the perceptron fits over errors until there are not any. The update rule is `w' = w + nyx`.
+
+## Perceptron Dual Form
+Every time a training example is misclassified, nyx is added to w. As training continues, any example has been misclassified a_i times.
+
+## Classifier Margin
+The margin for some point is a sample's distance from the decision boundary. This can be computed with `(y(w^T * x - t))/||w||` (non-homogenous)
+Given that you can seperate these data points in one way with some line, there must therefore be an inifnite number of ways to do so. Which is the best?
+
+# Support Vector Machines
+Rather than simply trying to optimize against mis-predictions, what if we optimized for the margin?
+Turns out this methodology is a constrained optimization problem, which can be solved via lagrangian multipliers.  
+First, we maximize `-1/2(sum_i(sum_j(a_i*a_j*y_i*y_j*(x_i . x_j)))) + sum(a_i)` over all the a_i terms  
+We then set `w = sum(a_i*y_i*x_i)`
+We solve the the threshold with `1 = w^T * x_i - t`  
+Sometimes it makes sense to do a soft-margin SVM, such thaat some errors are allowed during the optimization. We add an error term to the minimization problem, which sums over all of the errors, with some sort of multiplier determining that term's importance. This is generally an important thing to do.
 
 # Trees
 
-## Decision Trees vs Feature Trees
-
 ## Decision Trees
-
-## Feature Trees
+Decision trees parition the instance space, leaving sets of hypotheses. Ecah leaf is a conjunction of all of the literals on its path. This is extremely useful for explaning how a decision was made. Ideally, each leaf has no impurities during training. These can overfit easily, unless certain methodologies to reduce overfitting are used. First consider limiting branching depth, which will make sure that a model does not overfit on all sorts of input noise. Similairly, the model can be used in conjucntion with a number of other models such that some sort of a 'forest' of trees can be made. This, in conjunction with other optiization methods, leads to the concept of a random foest classifier, which takes a number of trees, averages them, and decides an output.
 
 ## Ranking Trees
+We can make a decision tree into a ranking tree by ordering the leaves. We can do so by impurity, and it usually makes sense to do some sort of smoothing on the output tree.
 
 ## Probability Estimation Trees
+Solve for empiraical probabilities for each leaf, and show the probability. Once again, applying some sort of correction is usually good practice.
 
-## Training Trees
+### Impurity
+Training these trees requires a comprehension of what a good split on a feature is. In this case, that is decided by the amount of impurity any particular eature choice leads to.  
+Impurity is some sort of a function which should be maximum when the output split is essentially random, and should be minimized hen the output is homogenous in its classification.  
+These functions are dpeendent on calculating (in the binary classification problem) `p'= Positive Examples / (Positive Examples + Negative Examples)`  
+Then the imurity for a leaf can be calcuated with a set of functions. Common functions are: 
+* Minority class: `min(p',1-p')`
+* Gini Index: `2p'(1-p')`
+* Entropy: -p'log_2(p') - (1-p')log_2(1-p')
+* Squareroot(Gini Index): `(2p'(1-p'))^.5`  
+For more than k classes, consider these generalized impurity functions:
+* k-class Entropy: `sum_over_classes(-p'*log_2(p'))` where p' is calculated on a per class basis, as the class's examples over the resulting total.
+* k-class Gini index: `sum_over_classes(p'(1-p'))`
 
 ### Best Split algo
+Pick a feature, measure the impurity. Would another feature be better? Fit and minimize.
 
 # Stats
 
 ### Mean
+Sum then divide over #. Integrate over probability * value. Expected value. etc.
 
 ### Variance
+variance = Expected Value of a variable^2 - mean^2.
+Std. Dev = squareroot(variance)
 
 ### Covariance
-
-### Covariance Matrix
-
-### Uncorrelated Variables
+Expected value of (var_1 * var_2) - mean_1 * mean_2
 
 ## Bayes Rule
+`P(A|B) = (P(B|A)P(A))/P(B)`
 
-# Math + More
+## Gram Matrix
+`X^T * X`
 
-## Homogenous vs Non-Homogenous Coordinate Representations
+# Kernel Trick
+So our percetrons and such have limited capacity since we're dealing with models which are fundamentally trying to learn some sort of linear model. The idea is to change our data points such that we end up with linearly seperable data points. The idea is to just replace thre dot product with some sort of valid funtion, which does the same sort of thing, but outputs a value transofofrmed into in a new instance space.
 
-## Outliers
+# Nearest neighbor classifiers
 
-## Regularization
+## Standard Nearest Neighbor classifier
+classification of any value is just the same as whatever the closest training example is. Closest is defined based on some given distance metric.
 
-# The Perceptron Model
+## k-NN
+Instead of just looking for whatever the closest point is, it is more effective to take some number of points closest to a value, and take the argmax of those to determine the class. This voting can be a simple argmax, or some sort of more complex voting.
+
+# Clustering
+The goal of clustering is to cluster data points that have high dimeensionality, to some sort of low dimensional space.  
+To achieve this goal, it traditionally focuses on two principles, minimizing within cluster distance, and maximizing between cluster distance. 
+
+### Scatter Matrix
+Lets say that X is a matrix that has zero-centered samples as row vectors, then `S=X^T*X`. You can also compute the scatter matrix by subsecting the data, and writing the matrix as a sum of those individual portions of the data. `S = sum(S_i[<- Subset scatter matrices]) + B[<-Scatter matrix of partition means]`
+
+### Scatter
+The scatter is the tarace of the scatter matrix. The trace is the sum of the diagonal elemeents of the matrix.
+
+## K-Means Clustering
+This is a NP-Complete problem. The k-means algorithim isn't too poor, but won't converge to the optimal solution most of the time. Rather, we run it a few times with random seeds, then choose the best. 
+
+### Algo
+1. randomly initialize K vectors for K classes.
+2. Assign each x to a data point, which is then minimized in relation to the cluster means.
+3. For each class, take this value and assign it to the corresponding cluster and redefine the mean.
+4. Repeat from step 2 until there is no (or very little) change in the cluster means.
+
+### Medioids
+Rather than simply computing a mean within the instance space, sometimes it makes more sense to use data points as exemplars. The medoid is the point with the minimal average dissimilarity to all other points within the set. This can be easily done by recomputing cluster medioids rather than means during step of the algo above.
+
+### Kernel K-Means
+If we replace our distance measurement with some sort of kernel measurement, then we can recompute our distance in a preferred manner to get a better clustering.
+
+# PCA and Eigendecomposition
+`PC_1 = argmax(y^T * X)(X^T * y)`
+These methods are etremely useful techniques for decomposing some sort of input into requisite parts. For example, given a chaotic dataset, you could use PCA to remove some sort of overwhelming skew from all of the data points.  
+As well, the eigenvectors of S are the prinipal components of the data, ordered by decreasing eigenvalues. The largest is the first principal component. These eigenvectors can be thought of as basis vectors.  
+This is a short section, but tremensdously important
 
 # Other
 
