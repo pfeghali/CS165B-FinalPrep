@@ -317,7 +317,40 @@ If we replace our distance measurement with some sort of kernel measurement, the
 `PC_1 = argmax(y^T * X)(X^T * y)`
 These methods are etremely useful techniques for decomposing some sort of input into requisite parts. For example, given a chaotic dataset, you could use PCA to remove some sort of overwhelming skew from all of the data points.  
 As well, the eigenvectors of S are the prinipal components of the data, ordered by decreasing eigenvalues. The largest is the first principal component. These eigenvectors can be thought of as basis vectors.  
-This is a short section, but tremensdously important
+This is a short section, but tremensdously important and applicable.
+
+# Model Ensembles
+We can combine models to increase the performance. While they increase complexity, they also increase performance. Some of the most common methods are bagging and boosting.
+
+## Bagging (Bootstrap Aggregation)
+Bagging is the process of creatibng T models on different random samples of the training data set. Those samples are made with replacement, and those are used to train sets of models. Those are then combined, and the differences between the models make up the ensemble. This then ends up producing some sort of piecewise linear model (assuming linear models).
+
+## Boosting
+Creates more diverse training sets than bagging, and focuses on selecting classifers that do better on misclassifications.  
+"As long as the performance of each classifier is better than chance, it is guaranteed to converge to a better classifier"
+
+### Methodology
+Train a classifier, and assign it a confidence factor based on its error rate. Do so for T classifiers. The ensemble predictor is the resulting weighted average for the models.  
+
+Generally more effective at getting a comprehensive model set than bagging.
+
+# Performance Measures and Experiments
+
+## Cross Validation
+1. Randomly partition the data into K folds
+2. Train the model on k-1 folds
+3. Test the data on the remaining fold
+4. Repeat the process for each test fold, then average the results
+
+This is known as k-fold cross validation. Generally each fold should have at least 30 instances. For larger datasets, less folds are probably needed, while for small datasets, leave-one-out may be best.  
+The results of this process also tell us about our data. If the variance between models is too high, you probably need more data.
+
+## Errors
+Training error should always be low. If the training error is too high, that is a sign that reevaluatng your model is necessary and it is not converging. Changing hyperparamaters would be a good decision, if not reevaluating your model entirely.  
+If the validation error is too high, your model is proabbly overfitting. There may be too many paramaters. It may be worth looking at dynamic learning rate adjustments. Changing hyperparamaters is probably the first solution to look at. 
+Testing error will almost always be higher than the validation error. If it is too high, recollect data, reconsider your type of data, etc. It should not be absurdly higher than your validation data. 
+
+# 'Neural' Networks
 
 # Other
 
