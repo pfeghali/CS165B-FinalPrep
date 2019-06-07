@@ -352,6 +352,29 @@ Testing error will almost always be higher than the validation error. If it is t
 
 # 'Neural' Networks
 
+#### Why the '' around neural?
+Are neural networks really biologial or anything like neurons? No, but that is okay. They are so effective due to massive fan-in and fan-out capability, in addition to non-linearities, but that does not make them neurons. SNNs are the closest we have, and those are currently in a chicken and egg stage with hardware. It is easy to overuse the term, but that does not make it more valid.
+
+## ANN - Artificial Neural Networks
+ANNs are sers of elements that form a network, which then can process inputs and learn some sort of function. networks are generally consructed to have learned weights, and are used to approximate inherently non-linear functions. From data, these models are designed to learn sets of weights (and sometimes architectures too!).
+
+## Linear Perceptrons
+They are a sum of weighted inputs with some sort of an activation function.
+
+## MLP - Multilayer perceptron
+ A two layer MLP can approximate any function. (Terrible idea, but you could do it!)  
+ When talking about multiple layers, we're just stacking these functions on top of each other to get increasingly well-connected layers.
+
+## DNN - Deep Neural Networks
+Fully connected feedforward networks. You've got a bunch of hidden layers inbetween the input and output, and the output then is thresholded and the most prominent output is chosen. DNNs can be expressed in terms of a matrix equation filled with non-linearities and whatever else.
+
+## Why non-linearities?
+There are some intuitive ways to look at why the non-linearities are important for DNNs.  
+I'd imagine some sort of complex layer structure. Attempting to use this layer structure to approximate some sort of continous problem, or highly non-linear function, is really hard. A big part of why that is hard, is selectivity. If we had no non-linearities, then every single weight would be fundamentally important to the output of the network. What non-linearities allow is slectivity in features. If there is some feature that becomes negative in some layer, rather than having to train and learn some weight vector with that data, the non-linearity cleans that data point and removes its importance. This allows for selectivity in our model, as it can choose to ignore certain vectors if they are learned to be unimportant. This leads to a form with learned selective importance intrinsically in the weights, which allow for highly selective functions with a massive capacity.  
+
+# Learning as Optimization
+
+
 # Other
 
 ![Deep Learning](https://i.warosu.org/data/g/img/0589/10/1486941106427.png)  
