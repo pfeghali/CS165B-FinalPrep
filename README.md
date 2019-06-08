@@ -366,7 +366,7 @@ They are a sum of weighted inputs with some sort of an activation function.
  When talking about multiple layers, we're just stacking these functions on top of each other to get increasingly well-connected layers.
 
 ## DNN - Deep Neural Networks
-Fully connected feedforward networks. You've got a bunch of hidden layers inbetween the input and output, and the output then is thresholded and the most prominent output is chosen. DNNs can be expressed in terms of a matrix equation filled with non-linearities and whatever else.
+Networks of many layers. You've got a bunch of hidden layers inbetween the input and output, and the output then is thresholded and the most prominent output is chosen. DNNs can be expressed in terms of a matrix equation filled with non-linearities and whatever else. The further you progress, the omre abstract the data between layers is.
 
 ## Why non-linearities?
 There are some intuitive ways to look at why the non-linearities are important for DNNs.  
@@ -425,6 +425,27 @@ I like what Wang mentioned in class, essentially just unfold the network's loops
 
 #### The bullet point #1 above
 Above I mentioned this: "use an MLP with extended inputs for diferent time periods". I feel like I should expand on what this means and why this is so useful. RNNs are fantastically useful for a variety of tasks, but sometimes are more trouble than they're worth (laziness, necessity, model structure, etc). Rather than use a RNN, one can simpy expand the input space to include the past inputs, and save them off network. This is a really great work-around for situations where you know that you need only a couple periods before the current one. 
+
+## Convolutions
+A convolution is an operation which applies some sort of matrix kernel to a portion of data. Convolutions changed deep learning as they allow for localized image analysis.  
+So why convolutions? Convolutions provide
+1. Localized image analysis
+2. Deep feature analysis with a number of channels
+3. Progressively more abstract image analysis
+
+### Localized Image Analysis
+Convolutions in DNNs are usually strided convolutions. A stride can be considered a step. A convolution applies some sort of kernel over some portion of data. Defining 'some' is what the shape of the kernel does. If you'd like a filter to cover more of an image, apply a larger kernel (5x5), or a more standard size of 3x3. This operation is then applied to one 3x3 portion of the image. Let's say we begin in the top left. After calculating the result for that square, the layer will then stride across the image, taking steps right, then moving down, until the operation has been applied to a plethora of data. The beauty of the operation is in the amount of overlap this operation provides. Usually strides are small, and therefore the stride will lead to most data being seen 3 times! This allows for the network to nearly never ignore portions of an image, and get good detail comprehension.  
+Padding is adding a layer of zeros (usually) to the border of an image, such that the convolution operation will output an image of the same size that it originally dealt with.  
+Given an image of width W, filter width F, stride S, and padding P, the output size will be `W' = (W-F+2P)/S + 1`
+
+### Deep Feature Analysis
+Since you are essentially applying some kernel to the entirety of an image, you are getting a msassive amount of extracted data from these systems. Given a simple layer with 64 learned filters, a single input image would then give 64 different output images! Some of these imeages may be useless, and through training will change, while others will learn how to integrate between themselves to form a more complete view of an output image. This progressive methodology is driven by the next step.
+
+### Increasing Abstraction
+Convolutinoal layers are usually stacked on top of each other. This is to provide increasing levels of visualization. If I have an image of size 256x256, then apply a 3x3 filter convolution, I will get a lot of edge detection and whatever else, but very little about the image as a whole. I could bump the filter size to 24 or more, but that would be a bit ridiculous and very hard to converge. Rather, it is more effecient to keep the same kernel size, but filter over more of the image. This can be done by making theimage smaller! Between vonclution layers, we usually apply some sort of pooling function to combine values to progressively make smaller layers. This is invaluble, as our filters now begin to look at increasingly large portions of the imagem and abstract more of the image into different filtes and such.
+
+#### Bioinspired?
+Kinda. There is no evidence that our brain does anything like a convolution, but the structure of CNNs and our brains have some similarities..
 
 
 # Other
