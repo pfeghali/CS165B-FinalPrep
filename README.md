@@ -372,8 +372,56 @@ Fully connected feedforward networks. You've got a bunch of hidden layers inbetw
 There are some intuitive ways to look at why the non-linearities are important for DNNs.  
 I'd imagine some sort of complex layer structure. Attempting to use this layer structure to approximate some sort of continous problem, or highly non-linear function, is really hard. A big part of why that is hard, is selectivity. If we had no non-linearities, then every single weight would be fundamentally important to the output of the network. What non-linearities allow is slectivity in features. If there is some feature that becomes negative in some layer, rather than having to train and learn some weight vector with that data, the non-linearity cleans that data point and removes its importance. This allows for selectivity in our model, as it can choose to ignore certain vectors if they are learned to be unimportant. This leads to a form with learned selective importance intrinsically in the weights, which allow for highly selective functions with a massive capacity.  
 
-# Learning as Optimization
+# Learning and Deep Learning
+The primary idea of these learning methods is learning a function through gradient based learning. inotw, a minimization problem.  
+Given some sort of loss function and paramter set, how to we minimize our loss function?
+1. Brute force - works every time.
+2. Calculus - I guess this works sometimes too.
 
+## Gradient Descent
+Gradient Descent as an optimization method for learning the optimal state for the model.  
+Update rule: `theta' = theta - learning_rate*gradient(loss_function(theta))`  
+This update rule works with sets of paramaters too.
+
+## Stochastic Gradient Descent
+Pick some training sample k.
+Then update rule: `theta' = theta - learning_rate*gradient(loss_function_k(theta))`
+The model then can be constantly updated.
+
+## Epoch
+An epoch is one pass over the training data.
+
+## MiniBatch SGD
+Rather than training over a single example, or the entire dataset, pick a set of B training samples as your batch. Then use that set during each batch. This helps the model train faster due to less time updating small steps with one example, and more effecient than optimizing over every possible error.
+
+## Dropout
+Randomly set some paramaters to 0. This helps make models significantly more robust.n While it does cost an increase in training time, it is absolutely worth it.
+
+## Backprop or: How I Learned to Stop Worrying and Love DNNs
+Basic of derivatives on computational graphs. Two rules to keep in mind
+1. Sum over all possible paths between two nodes
+2. Multiply the derivatives on each edge of the path together
+
+You can then do reverse mode differentiation to look at how any of the inputs should change in response to some sort of desired change in the output. Backprop works by propogating erros backwards from the output.  
+For each input training example, propogate it forward. Then after computing the output, propogate errors backward and calculate error terms. Update each weight accordingly `w_ij = w_ij + lr*err*input_from_i_to_j`. Continue to convergence.  
+Backprop leads to smooth interpolation between datapoints with the same label.
+
+## Activation Functions
+Different types of activation functions:
+* Boolean
+* Linear
+* Non-Linear
+* Bounded
+Some exmaples: unit steps, sign, linear, perice-wise linear, logistic, tanh, relu  
+Relu is very common, `max(x,0)`.
+
+## RNNs
+So what do we do if we have temporal information?
+1. Be lazy, cheat, and just use an MLP with extended inputs for diferent time periods (this works well, generally recommended).
+2. Use an RNN for variable length inputs and other benefits
+
+RNNs allow you to learn a general model for temporal inputs that are dependent on previous instances of time. An RNN passes along the information in the hidden layer. `h_t = activation(W*h_(t-1)+Ux_t)` `output = softmax(V*h_t)`.  
+I like what Wang mentioned in class, essentially just unfold the network's loops and make it look linear. There is now an interdependence on the previous state and your current state, as it acts as another input.
 
 # Other
 
