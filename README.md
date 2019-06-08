@@ -423,6 +423,10 @@ So what do we do if we have temporal information?
 RNNs allow you to learn a general model for temporal inputs that are dependent on previous instances of time. An RNN passes along the information in the hidden layer. `h_t = activation(W*h_(t-1)+Ux_t)` `output = softmax(V*h_t)`.  
 I like what Wang mentioned in class, essentially just unfold the network's loops and make it look linear. There is now an interdependence on the previous state and your current state, as it acts as another input.
 
+#### The bullet point #1 above
+Above I mentioned this: "use an MLP with extended inputs for diferent time periods". I feel like I should expand on what this means and why this is so useful. RNNs are fantastically useful for a variety of tasks, but sometimes are more trouble than they're worth (laziness, necessity, model structure, etc). Rather than use a RNN, one can simpy expand the input space to include the past inputs, and save them off network. This is a really great work-around for situations where you know that you need only a couple periods before the current one. 
+
+
 # Other
 
 ![Deep Learning](https://i.warosu.org/data/g/img/0589/10/1486941106427.png)  
