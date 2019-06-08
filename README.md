@@ -397,7 +397,7 @@ Rather than training over a single example, or the entire dataset, pick a set of
 ## Dropout
 Randomly set some paramaters to 0. This helps make models significantly more robust.n While it does cost an increase in training time, it is absolutely worth it.
 
-## Backprop or: How I Learned to Stop Worrying and Love DNNs
+## Backprop *or: How I Learned to Stop Worrying and Love DNNs*
 Basic of derivatives on computational graphs. Two rules to keep in mind
 1. Sum over all possible paths between two nodes
 2. Multiply the derivatives on each edge of the path together
