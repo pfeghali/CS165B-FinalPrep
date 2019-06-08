@@ -5,7 +5,7 @@ UCSB `CS165B` Final Study Guide
 #### Introduction:
 This is an incomplete final study guide.
 There is probably material missing from here, albeit most information should be valid.
-Do not expect substantive proofs, that's not what this is for. This will be continously updated as the course progresses.
+Do not expect substantive proofs, that's not what this is for.  
 Please email me if you'd like something updated or changed.
 ---
 ##### *All code blocks are mine unless otherwise noted, and might have errors/be suboptimal. I will be using pseudocode. Other documents and references will be linked to. Sorry about the typos, and excuse my math notation.*
@@ -395,7 +395,7 @@ An epoch is one pass over the training data.
 Rather than training over a single example, or the entire dataset, pick a set of B training samples as your batch. Then use that set during each batch. This helps the model train faster due to less time updating small steps with one example, and more effecient than optimizing over every possible error.
 
 ## Dropout
-Randomly set some paramaters to 0. This helps make models significantly more robust.n While it does cost an increase in training time, it is absolutely worth it.
+Randomly set some paramaters to 0. This helps make models significantly more robust. While it does cost an increase in training time, it is absolutely worth it.
 
 ## Backprop *or: How I Learned to Stop Worrying and Love DNNs*
 Basic of derivatives on computational graphs. Two rules to keep in mind
