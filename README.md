@@ -105,7 +105,8 @@ The curse of dimensionality is fundementally a sparsity problem, where an input 
 # Norms (Distance Measures)
 We utilize norms to measure the distance between data points in space. Common norms are the L2 norm, which is commonly seen in the form A^2 + B^2 = C^2. As well, the L1 norm, also known as the manhattan distance, is simply the summation of the difference between coordinate axes.  
 For a norm *N* with *D* dimensions, we can define the Norm between two points *A* and *B* as:  
-![equation](https://latex.codecogs.com/gif.latex?L_N%3D%5Csqrt%5BN%5D%7B%5Csum_%7Bi%20%5Cin%20D%7D%28A_i-B_i%29%5EN%7D)
+![equation](https://latex.codecogs.com/gif.latex?L_N%3D%5Csqrt%5BN%5D%7B%5Csum_%7Bi%20%5Cin%20D%7D%28A_i-B_i%29%5EN%7D)  
+Chebyshev distance: L->\inf
 
 # Contingency Plots
 A contingency plot is a table which represents the distribution of a classified otuputs into some sort of a plot given the input classes and the predicted outputs. In this case, we will focus on the plots as defined in the Professor's presentations, rather than in the book.
