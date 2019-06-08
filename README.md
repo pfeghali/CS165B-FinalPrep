@@ -230,7 +230,8 @@ Turns out this methodology is a constrained optimization problem, which can be s
 First, we maximize `-1/2(sum_i(sum_j(a_i*a_j*y_i*y_j*(x_i . x_j)))) + sum(a_i)` over all the a_i terms  
 We then set `w = sum(a_i*y_i*x_i)`
 We solve the the threshold with `1 = w^T * x_i - t`  
-Sometimes it makes sense to do a soft-margin SVM, such thaat some errors are allowed during the optimization. We add an error term to the minimization problem, which sums over all of the errors, with some sort of multiplier determining that term's importance. This is generally an important thing to do.
+Sometimes it makes sense to do a soft-margin SVM, such thaat some errors are allowed during the optimization. We add an error term to the minimization problem, which sums over all of the errors, with some sort of multiplier determining that term's importance. This is generally an important thing to do.  
+Lets also define margin as the distance from the decision boundary with the class taken into account
 
 # Trees
 
