@@ -142,9 +142,12 @@ Accuracy is a good overall metric to measure performance. Accuracy gives a good 
 ![Image of a Coverage Plot](./coverage_plot.PNG)  
 Coverage plots are plots which measure the number of true positives and false positives in relation to the number of positive and negative examples. They allow simple comparison of classifiers in a visual way. The optimal modesl are on the top left, and the worst are on the top-right (or anywhere on the diagonal between the origin and top-right). ROC plots are the same thing, but they're square. The axes are 1x1, normalized by the number of samples such that any plotted points are representative of true positive rates and false positive rates.
 # Basic Linear Classifer
-A linear classifer is the process of finding a hyperplane to seperate data and be able to classify whether or not an input is part of category A or B. This can be thought of as solving the equation `a(x1-x1_0) + b(x2-x2_0) + c(x3-x30) + ... = 0` for all coeffecients. This can be solved by solving for the coeffecients `{a, b, ...}` and for the bias `{a*x1_0 + b*x2_0 + ...}`. The coeffecients and bias can be solved for by taking dot products. The bias is the dot product of the vector between two centers and the average vector of the two. The coeffecients are simply the vector between the two. Therefore solving the classifier requires taking the averages of the centroids, finding the vector between them, and taking dot products. This method is extensible to N dimensions.
+A linear classifer is the process of finding a hyperplane to seperate data and be able to classify whether or not an input is part of category A or B. This can be thought of as solving the equation `a(x1-x1_0) + b(x2-x2_0) + c(x3-x30) + ... = 0` for all coeffecients. This can be solved by solving for the coeffecients `{a, b, ...}` and for the bias `{a*x1_0 + b*x2_0 + ...}`. The coeffecients and bias can be solved for by taking dot products. The bias is the dot product of the vector between two centers and the average vector of the two. The coeffecients are simply the vector between the two. Therefore solving the classifier requires taking the averages of the centroids, finding the vector between them, and taking dot products. This method is extensible to N dimensions.  
+
+Parameter wise, consider the output of this to be a scalar value. Generally this is an integer value within a range of the possible output classes. The input is a feature vector, made up of the individual input data points. The problem becomes learning the discrimiant function to properly map the input features to the correct output space.
+
 # Scoring Classifiers
-Scoring classifers produce some sort of score, which then is usually returned in combination with a prediction about waht the output is. Given an input, output a score for each of the K classes. Normally, the score is normalized to zero, with negatives indicating a negative class.
+Scoring classifers produce some sort of score, which then is usually returned in combination with a prediction about waht the output is. Given an input, output a score for each of the K classes. Normally, the score is normalized to zero, with negatives indicating a negative class. Consider this to be similair to the classifier, but rathre thann siplify simplying the uotput to one class, the function is mapping the output clas to some level of probability or rank. For example, given some sort of n-Dimenaisional fully connected deep network, the output vector has n length, for n classes. Then to choose the correct output, an argmax is usually done. Rather than employing an argmax, a scoring classifier could simply take these learned output values and assign the requisite classes scorec based on this information.
 ## Margin
 The margin is usually also the score. The margin is defined as `z(x) = class(x)*score(x)`. The corresponding score function is some function which maps the input to some output confidence level. A good function would be some function which retains sign, such as an L1 norm.
 ## Loss Functions
@@ -152,9 +155,9 @@ A loss function is a function which is used to tell some sort of a model how goo
 ### Minimizing Overfitting with intelligent loss function choices
 By choosing your loss function intelligently, you can minimize overfitting and get a more stable model. Certain loss functions are designed to penalize correct solutions as well, if they are too close (or far) from the boundary. It is easy to imagine extranneous behavior for loss function design that may fit better for some problems than others. 
 # Ranking Classifiers
-Ranking classifiers are useful for determing the ordering of some set of data points. This method is fairly robust to noise or other errors. The output of the classifier should have all of the positive examples ranked higher.
+Ranking classifiers are useful for determing the ordering of some set of data points. This method is fairly robust to noise or other errors. The output of the classifier should have all of the positive examples ranked higher than the negative examples.
 ## Error Assesment
-We define a ranking error as a single pair in which a negative exampleis ranked higher than a positive example. In addition, if their a tie, we count such an error as .50.
+We define a ranking error as a single pair in which a negative exampleis ranked higher than a positive example. In addition, if their a tie, we count such an error as .50 an error.
 ### Ranking Error Rate
 The ranking error rate is computed by dividing the number of errors by the number of positive data points * negatives.
 ### Ranking Accuracy
@@ -167,7 +170,7 @@ By counting each, we can form a coverage curve, which represents how a moving de
 We can then count the area under the curve, and divide it by the total size, to give us the accuracy of the classifier. The plot above is known as a coverage curve, and if we normalize the graph to 1x1, then we get ROC curve. The area under the ROC curve is equivalent to the ranking accuracy. 
 
 # Class Probability Estimation
-A scoring classifier which outputs probabilities over K classes, where the probabilities must add to 1.
+A scoring classifier which outputs probabilities over K classes, where the probabilities must add to 1. A scoring classifier can relatively easily be converted to a probaility estimator. Take a scoring classifier, with n values as the output. Since it is known that a probability should add to 1, you must normalize all of the scores such that their sum is 1. This is done by dividing each score by the total sum of all of the scores.
 
 # Empirical Probabilities
 Empirical probabilities are essentially just the relative frequency of data.
@@ -182,16 +185,16 @@ M-Estimate uses a set of priors to adjust the probabilites to a consistent state
 # PAC Learning
 PAC stands for Probably Approximately Correct. As taken from the slides, "If a concept is PAC-learnable, then there exists a learning algorithm that gets it mostly right, most of the time".  
 Define a hypothesis h in a space H, and a distribution of data D. Allow for an error rate of h for the distribution D: err_d. Allow some sort of error e, and allow a failure rate s. PAC learning outputs, with a probability at least 1-s, a hypothesis h such that err_d < e. These statements lead to the most of the time and mostly right statements.  
-This can actually become a guaruntee, given a large enough training set m = |D|.  
+This can actually become a guarantee, given a large enough training set m = |D|.  
 The given equation was: `m>=(1/e)(ln(|H|) + ln(1/s))`
 
 # VC Dimension
-The VC dimension is an attempt at measuring the capacity of a space of functions that can be learned from statistical classification. This is defined as the largest set of points that an algorithm can shatter.
+The VC dimension is an attempt at measuring the capacity of a space of functions that can be learned from statistical classification. This is defined as the largest set of points that an algorithm can shatter. Define shatter as the number of points that can be linearly seperated by a single algorithm For example, imagine a classification problem of an XOR function. Binary classification, and 4 possible points. They are arranged in an X like fashion, with the same labels opposing each other in opposite corners of some sort of square. There is no line which can define this function. That being said, for any 3 point problem, a line can shatter it.
 
 # MAP Decision rule
 
 # Regression Models
-Regression is the process of taking some set of points and fitting some sort of a function to those data points.
+Regression is the process of taking some set of points and fitting some sort of a function to those data points. Regression is nice because it is easily undderstood and explained. Overfitting is generally easily visualized, and understood. Regression is not effective for complex problems due to overfitting, or not being able to fit nicely to higher dimensions. Generally the most useful when mapping some input to a real valued output (some sort of scalar vector or something).
 
 ## Residual Error Optimization
 Generally, regression focuses on the minimization of some sort of loss function.  
@@ -201,7 +204,7 @@ The resdual is defined as the difference between the actual label of some data p
 Linear least squares regression refers to the process of minimizing the sum of the squares of the residuals.
 
 ### Univariate
-So lets say we have a set of data points, with an input and an output. Since there is a single input variable, this is considered univariate. Lets consider these data points as (h, w). This can be parameterized as w = a+bh, with a being some sort of bias term, and b being the slope of the learned line.  
+So lets say we have a set of data points, with an input and an output. Since there is a single input variable, this is considered univariate. Lets consider these data points as (h, w). This can be parameterized as w = a+bh, with a being some sort of bias term, and b being the slope of the learned line (I struggle to call this 'learned'. Fit is probably the better term for *all* of this material).  
 Effectively, we then can expand this to a general form, where the output function to estimate w given some sort of h input would be `w=average(w)+(covariance(h,w)/variance(h)^2)(h-average(h))`. This function effectively begins by noralizing any sort of input variable, then estimating its output slope based on its covariace and variance, then adding the output bias.
 
 ### Multivariate
@@ -280,7 +283,7 @@ Expected value of (var_1 * var_2) - mean_1 * mean_2
 `X^T * X`
 
 # Kernel Trick
-So our percetrons and such have limited capacity since we're dealing with models which are fundamentally trying to learn some sort of linear model. The idea is to change our data points such that we end up with linearly seperable data points. The idea is to just replace thre dot product with some sort of valid funtion, which does the same sort of thing, but outputs a value transofofrmed into in a new instance space.
+So our percetrons and such have limited capacity since we're dealing with models which are fundamentally trying to learn some sort of linear model. The idea is to change our data points such that we end up with linearly seperable data points. The idea is to just replace thre dot product with some sort of valid funtion, which does the same sort of thing, but outputs a value transofofrmed into in a new instance space. This is one with the dual form of the perceptron.
 
 # Nearest neighbor classifiers
 
@@ -448,7 +451,7 @@ Since you are essentially applying some kernel to the entirety of an image, you 
 Convolutinoal layers are usually stacked on top of each other. This is to provide increasing levels of visualization. If I have an image of size 256x256, then apply a 3x3 filter convolution, I will get a lot of edge detection and whatever else, but very little about the image as a whole. I could bump the filter size to 24 or more, but that would be a bit ridiculous and very hard to converge. Rather, it is more effecient to keep the same kernel size, but filter over more of the image. This can be done by making theimage smaller! Between vonclution layers, we usually apply some sort of pooling function to combine values to progressively make smaller layers. This is invaluble, as our filters now begin to look at increasingly large portions of the imagem and abstract more of the image into different filtes and such.
 
 #### Bioinspired?
-Kinda. There is no evidence that our brain does anything like a convolution, but the structure of CNNs and our brains have some similarities..
+Kinda. There is no evidence that our brain does anything like a convolution, but the structure of CNNs and our brains have some similarities.. So what is real learning? Probably active, feedback based models, with temporal computation, massive plasticity, extreme fan in and fan out, with plenty of skip connections. 
 
 
 # Other
